@@ -1,20 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:location/location.dart';
 import 'package:weathers/utils/colors.dart';
 import 'package:weathers/views/home_screen.dart';
 import 'package:weathers/views/login_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:weathers/views/home_screen.dart';
-import 'package:weathers/views/login_screen.dart';
 
 import '../utils/default_dialog.dart';
 
@@ -67,18 +60,16 @@ class LoginController extends GetxController with StateMixin {
 
   Future signUP() async {
     try {
-      // loadingData.value = true;
       DefaultDialog.showLoading();
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: signinusernameController.text.trim(),
         password: signinpasswordController.text.trim(),
       );
       Get.offAll(() => HomePage());
-      // loadingData.value = false;
+
       DefaultDialog.hideLoading();
       update();
     } on FirebaseAuthException catch (e) {
-      // loadingData.value = false;
       DefaultDialog.hideLoading();
       update();
       print(e);
@@ -88,7 +79,6 @@ class LoginController extends GetxController with StateMixin {
 
   void createUser() async {
     try {
-      // loadingData.value = true;
       DefaultDialog.showLoading();
       CollectionReference reference =
           FirebaseFirestore.instance.collection("Users");

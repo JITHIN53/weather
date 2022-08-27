@@ -8,7 +8,7 @@ import '../utils/colors.dart';
 
 class SignUpScreen extends GetView<LoginController> {
   SignUpScreen({Key? key}) : super(key: key);
-  // controller controller = Get.put(controller());
+  
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class SignUpScreen extends GetView<LoginController> {
                 Padding(
                   padding: EdgeInsets.only(left: 5.w, right: 5.w, top: 40.h),
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
+                    
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 20.h),
@@ -230,143 +230,3 @@ class SignUpScreen extends GetView<LoginController> {
 }
 
 
-
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/cupertino.dart';
-// import 'package:geolocator/geolocator.dart';
-// import 'package:get/get.dart';
-// // import 'package:location/location.dart' as location;
-// import 'package:pull_to_refresh/pull_to_refresh.dart';
-// import 'package:weathers/controllers/login_controller.dart';
-// import 'package:weathers/network/weather_api.dart';
-// import 'package:weathers/utils/colors.dart';
-// import 'package:weathers/utils/default_dialog.dart';
-
-// import '../models/weather_response_model.dart';
-// import '../views/login_screen.dart';
-
-// class HomepageController extends GetxController with StateMixin {
-//   WeatherResponseModel weatherResponseModel = WeatherResponseModel();
-
-//   final RefreshController refreshController = RefreshController(
-//     initialRefresh: false,
-//   );
-  // LoginController loginController = Get.find();
-//   // RxBool loading = false.obs;
-//   @override
-//   void onInit() async {
-//     super.onInit();
-
-//     await userLocationPosition();
-
-//     change(state, status: RxStatus.success());
-//   }
-
-//   Future onRefresh() async {
- 
-//     try {
-//         //  DefaultDialog.showLoading();
-//       await userLocationPosition();
-//       refreshController.refreshCompleted();
-
-//     } catch (e) {
-//       print(e);
-//       DefaultDialog.hideLoading();
-//       // refreshController.refreshFailed();
-//     }
-//    DefaultDialog.hideLoading();
-
-//     update();
-//   }
-
-  // Future getcurrentLocatin() async {
-  //   // loading.value = true;
-  //   DefaultDialog.showLoading();
-  //   Position position = await Geolocator.getCurrentPosition(
-  //       desiredAccuracy: LocationAccuracy.low);
-
-  //   // var lat = 11.258753;
-  //   // var lon = 75.780411;
-  //   var lat = position.latitude.toString();
-  //   var lon = position.longitude.toString();
-  //   print(lon);
-  //   print(lat);
-  //   WeatherResponseModel data = await ApiService().getWeatherDetails(lat, lon);
-  //   weatherResponseModel = data;
-  //   // loading.value = false;
-  //   DefaultDialog.hideLoading();
-
-  //   update();
-  // }
-
-  // Future<Position> userLocationPosition() async {
-  //   try {
-  //     bool serviceEnabled;
-  //     LocationPermission permission;
-  //     // loading.value = true;
-  //     // DefaultDialog.showLoading();
-  //     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  //     if (!serviceEnabled) {
-  //       Get.snackbar(
-  //         "'Location services are disabled'",
-  //         "",
-  //         snackPosition: SnackPosition.BOTTOM,
-  //         backgroundColor: AppColors.bluelt,
-  //       );
-  //       return Future.error('Location services are disabled.');
-  //     }
-
-  //     permission = await Geolocator.checkPermission();
-  //     if (permission == LocationPermission.denied) {
-  //       permission = await Geolocator.requestPermission();
-  //       if (permission == LocationPermission.denied) {
-  //         Get.snackbar(
-  //           "'Location permissions are denied'",
-  //           "",
-  //           snackPosition: SnackPosition.BOTTOM,
-  //           backgroundColor: AppColors.bluelgtr,
-  //         );
-  //         return Future.error('Location permissions are denied');
-  //       }
-  //     }
-
-  //     if (permission == LocationPermission.deniedForever) {
-  //       Get.snackbar(
-  //         "'Location permissions are permanently denied, we cannot request permissions.'",
-  //         "",
-  //         snackPosition: SnackPosition.BOTTOM,
-  //         backgroundColor: AppColors.bluelgtr,
-  //       );
-  //       return Future.error(
-  //           'Location permissions are permanently denied, we cannot request permissions.');
-  //     }
-  //     getcurrentLocatin();
-  //     DefaultDialog.hideLoading();
-  //     // loading.value = false;
-  //     update();
-  //     return await Geolocator.getCurrentPosition();
-  //   } catch (e) {
-  //     DefaultDialog.hideLoading();
-  //     print(e);
-  //   }
-  //   return await Geolocator.getCurrentPosition();
-  // }
-
-
-  // LoginController loginController = Get.find();
-  // void signout() async {
-  //   try {
-  //     DefaultDialog.showLoading();
-  //     loginController.passwordController.clear();
-  //     loginController.usernameController.clear();
-
-  //     await FirebaseAuth.instance.signOut().then(
-  //           (value) => Get.offAll(() => LoginScreen()),
-  //         );
-  //     DefaultDialog.hideLoading();
-  //   } catch (e) {
-  //     print(e);
-  //     DefaultDialog.hideLoading();
-  //   }
-  // }
-// }
